@@ -22,11 +22,12 @@ $ cd ./pico-serprog && cmake . && make
 
 ## Usage
 
-Dump a flashchip:
+Program a flashchip with .bin file:
 
 ```bash
 $ export FLASH_SIZE=16 #MByte
 $ export DATA_TO_FLASH=testbitmap.bin # testimage.bin
+
 # CREATE EMPTY IMAGE WITH SIZE OF THE FLASH CHIP
 $ perl -e 'print "ff "x('${FLASH_SIZE}'*1024*1024)'| xxd -r -p > ${FLASH_SIZE}_data.bin
 # ADD CONTENT TO IMAGE
