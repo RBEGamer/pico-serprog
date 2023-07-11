@@ -4,7 +4,6 @@
 *.elf.map
 *.hex
 *.pio.h
-*.uf2
 CMakeCache.txt
 CMakeCache.txt
 CMakeDoxy*

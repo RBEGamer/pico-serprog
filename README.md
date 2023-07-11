@@ -13,12 +13,19 @@ The default pin-out is:
 | 3    |    5     | MOSI     |
 | 4    |    6     | MISO     |
 
+
+## Build
+```bash
+$ git clone https://github.com/RBEGamer/pico-serprog.git ./pico-serprog
+$ cd ./pico-serprog && cmake . && make
+```
+
 ## Usage
 
 Dump a flashchip:
 
-```
-flashrom -p serprog:dev=/dev/ttyACM0:115200 -r foo.bin
+```bash
+$ flashrom -p serprog:dev=/dev/ttyACM0:115200 -r foo.bin
 ```
 
 ## License
