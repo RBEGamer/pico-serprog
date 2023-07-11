@@ -15,6 +15,9 @@
 // - Do a narrow read at a one halfword or 3 byte offset for n == 16, 8
 // in order to get the read data correctly justified. 
 
+
+
+
 void __time_critical_func(pio_spi_write8_blocking)(const pio_spi_inst_t *spi, const uint8_t *src, size_t len) {
     size_t tx_remain = len, rx_remain = len;
     // Do 8 bit accesses on FIFO, so that write data is byte-replicated. This

@@ -12,7 +12,7 @@ The default pin-out is:
 | 2    |    4     | SCK      |
 | 3    |    5     | MOSI     |
 | 4    |    6     | MISO     |
-
+| 5    |    7     | CRESET   |
 
 ## Build
 ```bash
@@ -25,7 +25,15 @@ $ cd ./pico-serprog && cmake . && make
 Dump a flashchip:
 
 ```bash
-$ flashrom -p serprog:dev=/dev/ttyACM0:115200 -r foo.bin
+$ export FLASH_SIZE=16 #MByte
+$ export DATA_TO_FLASH=testbitmap.bin # testimage.bin
+# CREATE EMPTY IMAGE WITH SIZE OF THE FLASH CHIP
+$ perl -e 'print "ff "x('${FLASH_SIZE}'*1024*1024)'| xxd -r -p > ${FLASH_SIZE}_data.bin
+# ADD CONTENT TO IMAGE
+$ dd if=$DATA_TO_FLASH of=${FLASH_SIZE}_data.bin conv=notrunc
+
+# FINALLY FLASH IMAGE
+$ flashrom -p serprog:dev=/dev/ttyACM0:115200,spispeed=12M -E -r ${FLASH_SIZE}_data.bin -V
 ```
 
 ## License
